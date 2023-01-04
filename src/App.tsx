@@ -1,11 +1,10 @@
-import { useState } from 'react'
+import { BrowserRouter } from 'react-router-dom'
+import { Router } from './Router'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export function App() {
   return (
-    <h1>Cronometro Pomodoro</h1>
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
   )
 }
-
-export default App
