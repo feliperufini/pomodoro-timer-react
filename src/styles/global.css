@@ -40,3 +40,32 @@ nav a.active {
 input[list]::-webkit-calendar-picker-indicator {
   display: none !important;
 }
+
+th {
+  background-color: #52525B;
+  padding: 1rem;
+  text-align: left;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+td {
+  background-color: #3F3F46;
+  border-top: 4px solid #27272A;
+  padding: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+td:first-child {
+  width: 50%;
+  padding-left: 1.5rem;
+}
+
+tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+
+tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
+}
