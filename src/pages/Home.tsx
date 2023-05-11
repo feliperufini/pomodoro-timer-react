@@ -5,6 +5,7 @@ import * as zod from 'zod'
 import { useEffect, useState } from 'react'
 import { differenceInSeconds } from 'date-fns'
 
+// validacao do formulario
 const newCycleFormValidationSchema = zod.object({
   task: zod.string().min(1),
   minutesAmount: zod.number().min(5).max(90),
@@ -12,7 +13,7 @@ const newCycleFormValidationSchema = zod.object({
 
 type newCycleFormData = zod.infer<typeof newCycleFormValidationSchema>
 
-interface Cycle {
+export interface Cycle {
   cycleId: string
   task: string
   minutesAmount: number

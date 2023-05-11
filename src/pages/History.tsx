@@ -1,26 +1,29 @@
 import { useState } from 'react'
+import { formatDistanceToNow } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
+import { Cycle } from './Home'
 
 export function History() {
-  const [tasks, setTasks] = useState([
+  const [cycles, setCycles] = useState<Cycle[]>([
     {
-      taskId: 1,
-      content: 'Tarefa 1',
-      duration: 60,
-      startedAt: '2023-01-04 17:00',
+      cycleId: '3',
+      task: 'Tarefa 3',
+      minutesAmount: 30,
+      startedAt: new Date('2023-05-11T11:00:00.000Z'),
       status: 1,
     },
     {
-      taskId: 2,
-      content: 'Tarefa 2',
-      duration: 60,
-      startedAt: '2023-01-04 17:00',
+      cycleId: '2',
+      task: 'Tarefa 2',
+      minutesAmount: 60,
+      startedAt: new Date('2023-03-04T17:00:00.000Z'),
       status: 2,
     },
     {
-      taskId: 3,
-      content: 'Tarefa 3',
-      duration: 60,
-      startedAt: '2023-01-04 17:00',
+      cycleId: '1',
+      task: 'Tarefa 1',
+      minutesAmount: 20,
+      startedAt: new Date('2023-01-04T17:00:00.000Z'),
       status: 0,
     },
   ])
@@ -39,17 +42,22 @@ export function History() {
             </tr>
           </thead>
           <tbody>
-            {tasks.map((task) => (
-              <tr key={task.taskId}>
-                <td>{task.content}</td>
-                <td>{task.duration} minutos</td>
-                <td>{task.startedAt}</td>
+            {cycles.map((cycle) => (
+              <tr key={cycle.cycleId}>
+                <td>{cycle.task}</td>
+                <td>{cycle.minutesAmount} minutos</td>
                 <td>
-                  {task.status === 0 ? (
+                  {formatDistanceToNow(new Date(cycle.startedAt), {
+                    addSuffix: true,
+                    locale: ptBR,
+                  })}
+                </td>
+                <td>
+                  {cycle.status === 0 ? (
                     <span className="flex items-center gap-2 before:w-2 before:h-2 before:rounded-full before:bg-red-500">
                       Interrompido
                     </span>
-                  ) : task.status === 1 ? (
+                  ) : cycle.status === 1 ? (
                     <span className="flex items-center gap-2 before:w-2 before:h-2 before:rounded-full before:bg-yellow-500">
                       Em andamento
                     </span>
